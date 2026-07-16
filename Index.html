@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J. Louis Onguto Advocates</title>
+    <!-- High-end Google Fonts: Playfair Display for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- THEME VARIABLES --- */
+        :root {
+            --bg-color: #F8FAFC;
+            --surface-color: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --accent-color: #0369A1;
+            --accent-hover: #0284C7;
+            --border-color: #E2E8F0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0B1120;
+            --surface-color: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-color: #38BDF8;
+            --accent-hover: #7DD3FC;
+            --border-color: #334155;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(var(--surface-color), 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 12rem 0 8rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--surface-color) 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .accent-text {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* --- GRID CARDS --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* --- TEAM SECTION --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card h3 {
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+
+        .role {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-info {
+            text-align: center;
+            background-color: var(--surface-color);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info strong {
+            color: var(--text-primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav style="background-color: transparent;"> <!-- Inline style for JS override handling -->
+        <div class="container nav-container">
+            <a href="#" class="logo">J. Louis Onguto</a>
+            <button class="theme-toggle" id="themeToggle">
+                <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Rigorous Scholarship.<br><span class="accent-text">Commercial Precision.</span><br>Enduring Integrity.</h1>
+            <p>J. Louis Onguto Advocates is a premier commercial law firm in Nairobi, delivering tailored legal architecture and dispute resolution for corporate and private clients.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <div class="section-header">
+                <h2>About Us</h2>
+            </div>
+            <p style="font-size: 1.15rem;">J. Louis Onguto Advocates is a dynamic commercial law firm headquartered in Nairobi's Upper Hill district. We provide decisive, pragmatic, and highly structured legal solutions for corporate and private clients. Our practice is built on commercial precision, rigorous legal research, and an uncompromising commitment to protecting our clients' strategic interests.</p>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section id="practice" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Practice Areas</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Commercial & Corporate Law</h3>
+                    <p>Drafting, reviewing, and structuring complex commercial agreements—from customized service contracts to major corporate structuring and advisory.</p>
+                </div>
+                <div class="card">
+                    <h3>Civil & Commercial Litigation</h3>
+                    <p>Robust representation across all judicial tiers, from the Small Claims Court to complex appellate reviews, backed by meticulous research and strategic advocacy.</p>
+                </div>
+                <div class="card">
+                    <h3>Real Estate & Conveyancing</h3>
+                    <p>Comprehensive legal mechanics for commercial property transactions, land use, and development financing.</p>
+                </div>
+                <div class="card">
+                    <h3>Alternative Dispute Resolution</h3>
+                    <p>Navigating mediation and arbitration to achieve swift, confidential, and commercially viable settlements outside the courtroom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="card team-card">
+                    <h3>Prof. Edwin Abuya</h3>
+                    <span class="role">Managing Partner</span>
+                    <p>As Managing Partner, Prof. Abuya brings an unmatched depth of jurisprudential expertise to the firm's strategic direction. In addition to his leadership in private practice, he serves as a Professor at the University of Nairobi. This dual perspective allows him to bridge the gap between rigorous academic legal theory and pragmatic commercial application, offering clients highly sophisticated counsel on complex legal matters.</p>
+                </div>
+                
+                <div class="card team-card">
+                    <h3>Tabitha Kibe</h3>
+                    <span class="role">Associate</span>
+                    <p>Tabitha drives the firm's core transactional and advisory mandates. She specializes in steering complex commercial transactions, overseeing dispute resolution strategies, and ensuring that clients' operational risks are minimized. Her approach combines sharp legal analysis with a deep understanding of the local business environment.</p>
+                </div>
+
+                <div class="card team-card">
+                    <h3>Cynthia Chepngetich</h3>
+                    <span class="role">Lawyer</span>
+                    <p>Cynthia is integral to the firm’s legal operations and client advocacy. She brings meticulous attention to detail to statutory research, case preparation, and the drafting of pleadings. Her procedural knowledge ensures that client matters move efficiently through the legal system.</p>
+                </div>
+
+                <div class="card team-card">
+                    <h3>Ferdinard Kipas</h3>
+                    <span class="role">Lawyer</span>
+                    <p>Ferdinard brings sharp execution to the firm's civil litigation and corporate drafting desks. His practice focuses on structuring highly customized commercial service agreements, formulating robust written submissions for appellate proceedings, and navigating civil tort claims. He combines hands-on registry experience with tactical drafting to protect client interests.</p>
+                </div>
+            </div>
+
+            <!-- Support Staff -->
+            <div class="section-header" style="margin-top: 6rem; margin-bottom: 3rem;">
+                <h2>Administration & Support</h2>
+            </div>
+            <div class="grid">
+                <div class="card team-card">
+                    <h3>Daniel Okiro</h3>
+                    <span class="role">Clerk</span>
+                    <p>Daniel ensures the seamless physical and digital execution of the firm’s casework. Holding a degree in Criminology, he brings a valuable investigative edge to case file management, registry logistics, and compliance tracking across regional courts.</p>
+                </div>
+                <div class="card team-card">
+                    <h3>Mary</h3>
+                    <span class="role">Secretary</span>
+                    <p>Mary is the operational anchor of the firm. She manages front-line client relations, coordinates executive scheduling, and ensures the office’s administrative framework runs with complete precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color);">
+        <div class="container" style="max-width: 600px;">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-info">
+                <p><strong>Office:</strong> 2nd Floor, Flamingo Towers<br>Mara Road, Upper Hill, Nairobi</p>
+                <p style="margin-top: 1.5rem;"><strong>Phone:</strong> 0723 155 808</p>
+                <p><strong>Email:</strong> jlouisongutoadvocates@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin: 0; font-size: 0.9rem;">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const nav = document.querySelector('nav');
+
+        // Check for saved theme or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateToggleBtn(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleBtn(newTheme);
+        });
+
+        function updateToggleBtn(theme) {
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Nav background handler on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(var(--surface-color-rgb), 0.9)';
+                nav.style.boxShadow = 'var(--shadow)';
+            } else {
+                nav.style.backgroundColor = 'transparent';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
