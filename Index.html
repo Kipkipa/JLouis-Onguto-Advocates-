@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J. Louis Onguto Advocates</title>
+    <!-- High-end Google Fonts: Playfair Display for headings, Inter for body -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- THEME VARIABLES --- */
@@ -267,7 +268,25 @@
             background-color: var(--surface-color);
             border-top: 1px solid var(--border-color);
             padding: 2rem 0;
-            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
         }
 
         /* --- RESPONSIVE --- */
@@ -284,11 +303,17 @@
             .hero h1 { font-size: 2.5rem; }
             .team-grid { grid-template-columns: 1fr; }
             .contact-layout { padding: 2rem 1.5rem; }
+            .footer-content { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 1rem; 
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav style="background-color: transparent;"> 
         <div class="container nav-container">
             <a href="#" class="logo">J. Louis Onguto</a>
@@ -298,6 +323,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Rigorous Scholarship.<br><span class="accent-text">Commercial Precision.</span><br>Enduring Integrity.</h1>
@@ -305,6 +331,7 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about">
         <div class="container" style="max-width: 800px; text-align: center;">
             <div class="section-header">
@@ -314,6 +341,7 @@
         </div>
     </section>
 
+    <!-- Practice Areas -->
     <section id="practice" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container">
             <div class="section-header">
@@ -340,6 +368,7 @@
         </div>
     </section>
 
+    <!-- Team Section -->
     <section id="team">
         <div class="container">
             <div class="section-header">
@@ -371,6 +400,7 @@
                 </div>
             </div>
 
+            <!-- Support Staff -->
             <div class="section-header" style="margin-top: 6rem; margin-bottom: 3rem;">
                 <h2>Administration & Support</h2>
             </div>
@@ -389,6 +419,7 @@
         </div>
     </section>
 
+    <!-- Contact & Map Section -->
     <section id="contact" style="background-color: var(--bg-color); border-top: 1px solid var(--border-color);">
         <div class="container" style="max-width: 1000px;">
             <div class="section-header">
@@ -403,6 +434,7 @@
                 </div>
                 
                 <div class="map-container">
+                    <!-- Google Maps Embed for Flamingo Towers, Nairobi -->
                     <iframe 
                         src="https://maps.google.com/maps?q=Flamingo+Towers,+Mara+Road,+Upper+Hill,+Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
@@ -415,13 +447,19 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p style="margin: 0; font-size: 0.9rem;">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
+        <div class="container footer-content">
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#" onclick="openCareersWindow(event)">Careers</a>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
+        // --- THEME TOGGLE LOGIC ---
         const toggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
@@ -451,7 +489,7 @@
             }
         }
 
-        // Nav background handler on scroll
+        // --- NAV SCROLL EFFECT ---
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav.style.backgroundColor = 'rgba(var(--surface-color-rgb), 0.9)';
@@ -461,6 +499,80 @@
                 nav.style.boxShadow = 'none';
             }
         });
+
+        // --- CAREERS WINDOW LOGIC ---
+        function openCareersWindow(e) {
+            e.preventDefault(); // Prevents the page from jumping to the top
+            
+            // Open a blank new tab
+            const newWindow = window.open('', '_blank');
+            
+            // Detect if the user is currently in dark mode to style the new window accordingly
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const bgColor = isDark ? '#0B1120' : '#F8FAFC';
+            const surfaceColor = isDark ? '#1E293B' : '#FFFFFF';
+            const textColor = isDark ? '#F8FAFC' : '#0F172A';
+            const textSecondary = isDark ? '#94A3B8' : '#475569';
+            const borderColor = isDark ? '#334155' : '#E2E8F0';
+
+            // Generate the HTML for the new window
+            const htmlContent = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>Careers | J. Louis Onguto Advocates</title>
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+                <style>
+                    body {
+                        font-family: 'Inter', sans-serif;
+                        background-color: ${bgColor};
+                        color: ${textColor};
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                        padding: 20px;
+                        box-sizing: border-box;
+                    }
+                    .message-box {
+                        background-color: ${surfaceColor};
+                        padding: 3rem;
+                        border-radius: 12px;
+                        border: 1px solid ${borderColor};
+                        text-align: center;
+                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                        max-width: 450px;
+                        width: 100%;
+                    }
+                    h2 {
+                        font-family: 'Playfair Display', serif;
+                        margin-top: 0;
+                        margin-bottom: 1rem;
+                        font-size: 2rem;
+                    }
+                    p {
+                        color: ${textSecondary};
+                        line-height: 1.6;
+                        margin-bottom: 0;
+                        font-size: 1.1rem;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="message-box">
+                    <h2>Careers</h2>
+                    <p>There are currently no job openings available at J. Louis Onguto Advocates. Please check back later.</p>
+                </div>
+            </body>
+            </html>
+            `;
+            
+            // Write the HTML into the new tab
+            newWindow.document.write(htmlContent);
+            newWindow.document.close();
+        }
     </script>
 </body>
 </html>
