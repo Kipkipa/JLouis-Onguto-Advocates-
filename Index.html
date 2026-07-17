@@ -3,90 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J. Louis Onguto Advocates</title>
-    <!-- High-end Google Fonts: Playfair Display for headings, Inter for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>J. Louis Onguto Advocates | Premium Commercial Law</title>
+    <!-- High-end Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- THEME VARIABLES --- */
+        /* --- DYNAMIC THEME VARIABLES --- */
         :root {
+            /* Light Mode - Marble & Morning Light */
             --bg-color: #F8FAFC;
-            --surface-color: #FFFFFF;
+            --surface-rgb: 255, 255, 255;
             --text-primary: #0F172A;
             --text-secondary: #475569;
             --accent-color: #0369A1;
             --accent-hover: #0284C7;
-            --border-color: #E2E8F0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --transition: all 0.3s ease;
+            --border-color: rgba(15, 23, 42, 0.1);
+            --orb-left: rgba(3, 105, 161, 0.15);
+            --orb-right: rgba(14, 165, 233, 0.12);
+            --pillar-color: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.03) 50%, transparent);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         [data-theme="dark"] {
+            /* Dark Mode - Executive Suite Night */
             --bg-color: #0B1120;
-            --surface-color: #1E293B;
+            --surface-rgb: 30, 41, 59;
             --text-primary: #F8FAFC;
             --text-secondary: #94A3B8;
             --accent-color: #38BDF8;
             --accent-hover: #7DD3FC;
-            --border-color: #334155;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --orb-left: rgba(2, 132, 199, 0.2);
+            --orb-right: rgba(125, 211, 252, 0.15);
+            --pillar-color: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02) 50%, transparent);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
 
         /* --- BASE STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
-            transition: var(--transition);
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            margin-bottom: 1rem;
             color: var(--text-primary);
         }
 
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10; }
+
+        /* --- DYNAMIC LAW BACKGROUND (The Scales & The Pillar) --- */
+        .law-background {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* The Central Pillar of Justice */
+        .pillar {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 300px; height: 100vh;
+            background: var(--pillar-color);
+            transition: var(--transition);
+        }
+
+        /* The Scales (Animated Orbs) */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            transition: background 1s ease;
+        }
+
+        .orb-left {
+            width: 500px; height: 500px;
+            background: var(--orb-left);
+            top: 20%; left: -100px;
+            animation: balanceLeft 12s ease-in-out infinite;
+        }
+
+        .orb-right {
+            width: 600px; height: 600px;
+            background: var(--orb-right);
+            bottom: 10%; right: -150px;
+            animation: balanceRight 12s ease-in-out infinite;
+        }
+
+        @keyframes balanceLeft {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-60px) scale(1.05); }
+        }
+
+        @keyframes balanceRight {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(60px) scale(0.95); }
         }
 
         /* --- NAVIGATION --- */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(var(--surface-color), 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            top: 0; width: 100%;
+            background-color: rgba(var(--surface-rgb), 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 85px; }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             color: var(--text-primary);
@@ -94,227 +136,151 @@
         }
 
         .theme-toggle {
-            background: none;
-            border: 2px solid var(--border-color);
+            background: rgba(var(--surface-rgb), 0.5);
+            border: 1px solid var(--border-color);
             color: var(--text-primary);
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
+            backdrop-filter: blur(4px);
         }
 
-        .theme-toggle:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
+        .theme-toggle:hover { border-color: var(--accent-color); color: var(--accent-color); transform: translateY(-2px); }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 12rem 0 8rem;
-            text-align: center;
-            background: linear-gradient(180deg, var(--surface-color) 0%, var(--bg-color) 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .accent-text {
-            color: var(--accent-color);
-            font-style: italic;
-        }
-
-        /* --- SECTIONS --- */
-        section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        /* --- GRID CARDS --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            padding: 2.5rem;
-            border-radius: 12px;
+        /* --- GLASSMORPHISM CARDS (The Slick UI) --- */
+        .glass-card {
+            background: rgba(var(--surface-rgb), 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
+        .glass-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+
+        /* --- HERO SECTION --- */
+        .hero { padding: 14rem 0 10rem; text-align: center; }
+
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
+
+        .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-secondary); }
+
+        .accent-text { color: var(--accent-color); font-style: italic; font-weight: 500; }
+
+        /* --- SECTIONS --- */
+        section { padding: 6rem 0; position: relative; z-index: 10; }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+
+        .section-header h2 { font-size: 2.8rem; position: relative; display: inline-block; }
+
+        .section-header h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%;
+            transform: translateX(-50%); width: 40px; height: 3px;
+            background-color: var(--accent-color); border-radius: 2px;
         }
 
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
+        /* --- GRIDS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; }
 
-        /* --- TEAM SECTION --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
-        }
+        .glass-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-color); }
 
-        .team-card h3 {
-            margin-bottom: 0.2rem;
-            color: var(--text-primary);
-        }
+        .team-card h3 { margin-bottom: 0.2rem; color: var(--text-primary); }
 
         .role {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            display: block;
+            font-size: 0.85rem; color: var(--accent-color); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem; display: block;
         }
+
+        /* --- HYPERLINK STYLING (Ferdinard) --- */
+        .lawyer-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .lawyer-link::after {
+            content: '↗';
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6em;
+            position: absolute;
+            top: 2px; right: -14px;
+            opacity: 0;
+            color: var(--accent-color);
+            transition: var(--transition);
+            transform: translate(-5px, 5px);
+        }
+        .lawyer-link:hover { color: var(--accent-color); }
+        .lawyer-link:hover::after { opacity: 1; transform: translate(0, 0); }
 
         /* --- CONTACT & MAP SECTION --- */
         .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: stretch;
-            background-color: var(--surface-color);
-            padding: 3rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch;
+            background: rgba(var(--surface-rgb), 0.4);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            padding: 4rem; border-radius: 20px; border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .contact-details { display: flex; flex-direction: column; justify-content: center; }
 
-        .contact-details p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
+        .contact-details p { font-size: 1.15rem; margin-bottom: 2rem; line-height: 1.8; }
 
         .contact-details strong {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 0.2rem;
-            font-family: 'Playfair Display', serif;
+            color: var(--text-primary); font-size: 1.3rem; display: block;
+            margin-bottom: 0.4rem; font-family: 'Playfair Display', serif;
         }
 
-        .map-container {
-            width: 100%;
-            min-height: 350px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
+        .map-container { width: 100%; min-height: 350px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .map-container iframe { width: 100%; height: 100%; border: none; filter: grayscale(20%) contrast(1.1); }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--surface-color);
+            background: rgba(var(--surface-rgb), 0.3);
+            backdrop-filter: blur(10px);
             border-top: 1px solid var(--border-color);
-            padding: 2rem 0;
+            padding: 2.5rem 0; position: relative; z-index: 10;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; }
 
         .footer-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
+            color: var(--text-primary); text-decoration: none; font-weight: 600;
+            font-size: 0.95rem; transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
-        }
+        .footer-links a:hover { color: var(--accent-color); }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .contact-layout {
-                grid-template-columns: 1fr;
-            }
-            .map-container {
-                height: 300px;
-            }
-        }
-
+        @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; padding: 2.5rem; } .map-container { height: 350px; } }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .team-grid { grid-template-columns: 1fr; }
-            .contact-layout { padding: 2rem 1.5rem; }
-            .footer-content { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 1rem; 
-            }
+            .hero h1 { font-size: 3rem; } .team-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Dynamic Law Background Animation -->
+    <div class="law-background">
+        <div class="pillar"></div>
+        <div class="orb orb-left"></div>
+        <div class="orb orb-right"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav style="background-color: transparent;"> 
+    <nav> 
         <div class="container nav-container">
             <a href="#" class="logo">J. Louis Onguto</a>
             <button class="theme-toggle" id="themeToggle">
@@ -333,35 +299,31 @@
 
     <!-- About Section -->
     <section id="about">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <div class="section-header">
-                <h2>About Us</h2>
-            </div>
-            <p style="font-size: 1.15rem;">J. Louis Onguto Advocates is a dynamic commercial law firm headquartered in Nairobi's Upper Hill district. We provide decisive, pragmatic, and highly structured legal solutions for corporate and private clients. Our practice is built on commercial precision, rigorous legal research, and an uncompromising commitment to protecting our clients' strategic interests.</p>
+        <div class="container" style="max-width: 850px; text-align: center;">
+            <div class="section-header"><h2>About Us</h2></div>
+            <p style="font-size: 1.2rem; line-height: 1.8;">J. Louis Onguto Advocates is a dynamic commercial law firm headquartered in Nairobi's Upper Hill district. We provide decisive, pragmatic, and highly structured legal solutions for corporate and private clients. Our practice is built on commercial precision, rigorous legal research, and an uncompromising commitment to protecting our clients' strategic interests.</p>
         </div>
     </section>
 
     <!-- Practice Areas -->
-    <section id="practice" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <section id="practice">
         <div class="container">
-            <div class="section-header">
-                <h2>Practice Areas</h2>
-            </div>
+            <div class="section-header"><h2>Practice Areas</h2></div>
             <div class="grid">
-                <div class="card">
-                    <h3>Commercial & Corporate Law</h3>
+                <div class="glass-card">
+                    <h3>Commercial & Corporate</h3>
                     <p>Drafting, reviewing, and structuring complex commercial agreements—from customized service contracts to major corporate structuring and advisory.</p>
                 </div>
-                <div class="card">
+                <div class="glass-card">
                     <h3>Civil & Commercial Litigation</h3>
                     <p>Robust representation across all judicial tiers, from the Small Claims Court to complex appellate reviews, backed by meticulous research and strategic advocacy.</p>
                 </div>
-                <div class="card">
+                <div class="glass-card">
                     <h3>Real Estate & Conveyancing</h3>
                     <p>Comprehensive legal mechanics for commercial property transactions, land use, and development financing.</p>
                 </div>
-                <div class="card">
-                    <h3>Alternative Dispute Resolution</h3>
+                <div class="glass-card">
+                    <h3>Alternative Dispute</h3>
                     <p>Navigating mediation and arbitration to achieve swift, confidential, and commercially viable settlements outside the courtroom.</p>
                 </div>
             </div>
@@ -371,46 +333,45 @@
     <!-- Team Section -->
     <section id="team">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Team</h2>
-            </div>
+            <div class="section-header"><h2>Our Team</h2></div>
             <div class="team-grid">
-                <div class="card team-card">
+                <div class="glass-card team-card">
                     <h3>Prof. Edwin Abuya</h3>
                     <span class="role">Managing Partner</span>
-                    <p>As Managing Partner, Prof. Abuya brings an unmatched depth of jurisprudential expertise to the firm's strategic direction. In addition to his leadership in private practice, he serves as a Professor at the University of Nairobi. This dual perspective allows him to bridge the gap between rigorous academic legal theory and pragmatic commercial application, offering clients highly sophisticated counsel on complex legal matters.</p>
+                    <p>As Managing Partner, Prof. Abuya brings an unmatched depth of jurisprudential expertise to the firm's strategic direction. In addition to his leadership in private practice, he serves as a Professor at the University of Nairobi. This dual perspective allows him to bridge the gap between rigorous academic legal theory and pragmatic commercial application.</p>
                 </div>
                 
-                <div class="card team-card">
+                <div class="glass-card team-card">
                     <h3>Tabitha Kibe</h3>
                     <span class="role">Associate</span>
                     <p>Tabitha drives the firm's core transactional and advisory mandates. She specializes in steering complex commercial transactions, overseeing dispute resolution strategies, and ensuring that clients' operational risks are minimized. Her approach combines sharp legal analysis with a deep understanding of the local business environment.</p>
                 </div>
 
-                <div class="card team-card">
+                <div class="glass-card team-card">
                     <h3>Cynthia Chepngetich</h3>
                     <span class="role">Lawyer</span>
                     <p>Cynthia is integral to the firm’s legal operations and client advocacy. She brings meticulous attention to detail to statutory research, case preparation, and the drafting of pleadings. Her procedural knowledge ensures that client matters move efficiently through the legal system.</p>
                 </div>
 
-                <div class="card team-card">
-                    <h3>Ferdinard Kipas</h3>
+                <div class="glass-card team-card">
+                    <!-- PERSONALIZED HYPERLINK ADDED HERE -->
+                    <h3 style="margin-bottom: 0.2rem;"><a href="https://ferdinardkipas.netlify.app/" target="_blank" class="lawyer-link">Ferdinard Kipas</a></h3>
                     <span class="role">Lawyer</span>
                     <p>Ferdinard brings sharp execution to the firm's civil litigation and corporate drafting desks. His practice focuses on structuring highly customized commercial service agreements, formulating robust written submissions for appellate proceedings, and navigating civil tort claims. He combines hands-on registry experience with tactical drafting to protect client interests.</p>
                 </div>
             </div>
 
             <!-- Support Staff -->
-            <div class="section-header" style="margin-top: 6rem; margin-bottom: 3rem;">
+            <div class="section-header" style="margin-top: 7rem; margin-bottom: 4rem;">
                 <h2>Administration & Support</h2>
             </div>
             <div class="grid">
-                <div class="card team-card">
+                <div class="glass-card team-card">
                     <h3>Daniel Okiro</h3>
                     <span class="role">Clerk</span>
                     <p>Daniel ensures the seamless physical and digital execution of the firm’s casework. Holding a degree in Criminology, he brings a valuable investigative edge to case file management, registry logistics, and compliance tracking across regional courts.</p>
                 </div>
-                <div class="card team-card">
+                <div class="glass-card team-card">
                     <h3>Mary</h3>
                     <span class="role">Secretary</span>
                     <p>Mary is the operational anchor of the firm. She manages front-line client relations, coordinates executive scheduling, and ensures the office’s administrative framework runs with complete precision.</p>
@@ -420,37 +381,31 @@
     </section>
 
     <!-- Contact & Map Section -->
-    <section id="contact" style="background-color: var(--bg-color); border-top: 1px solid var(--border-color);">
-        <div class="container" style="max-width: 1000px;">
-            <div class="section-header">
-                <h2>Contact Us</h2>
-            </div>
+    <section id="contact">
+        <div class="container" style="max-width: 1050px;">
+            <div class="section-header"><h2>Contact Us</h2></div>
             
             <div class="contact-layout">
                 <div class="contact-details">
                     <p><strong>Office Location</strong> 2nd Floor, Flamingo Towers<br>Mara Road, Upper Hill, Nairobi</p>
                     <p><strong>Phone Number</strong> 0723 155 808</p>
-                    <p><strong>Email Address</strong> <a href="mailto:jlouisongutoadvocates@gmail.com" style="color: var(--accent-color); text-decoration: none;">jlouisongutoadvocates@gmail.com</a></p>
+                    <p><strong>Email Address</strong> <a href="mailto:jlouisongutoadvocates@gmail.com" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">jlouisongutoadvocates@gmail.com</a></p>
                 </div>
                 
                 <div class="map-container">
-                    <!-- Google Maps Embed for Flamingo Towers, Nairobi -->
                     <iframe 
                         src="https://maps.google.com/maps?q=Flamingo+Towers,+Mara+Road,+Upper+Hill,+Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
-            
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
             <div class="footer-links">
                 <a href="#" onclick="openCareersWindow(event)">Careers</a>
             </div>
@@ -463,9 +418,7 @@
         const toggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
-        const nav = document.querySelector('nav');
 
-        // Check for saved theme or default to light
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateToggleBtn(savedTheme);
@@ -490,86 +443,66 @@
         }
 
         // --- NAV SCROLL EFFECT ---
+        const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                nav.style.backgroundColor = 'rgba(var(--surface-color-rgb), 0.9)';
                 nav.style.boxShadow = 'var(--shadow)';
             } else {
-                nav.style.backgroundColor = 'transparent';
                 nav.style.boxShadow = 'none';
             }
         });
 
         // --- CAREERS WINDOW LOGIC ---
         function openCareersWindow(e) {
-            e.preventDefault(); // Prevents the page from jumping to the top
-            
-            // Open a blank new tab
+            e.preventDefault(); 
             const newWindow = window.open('', '_blank');
             
-            // Detect if the user is currently in dark mode to style the new window accordingly
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const bgColor = isDark ? '#0B1120' : '#F8FAFC';
-            const surfaceColor = isDark ? '#1E293B' : '#FFFFFF';
+            const surfaceColor = isDark ? 'rgba(30, 41, 59, 0.8)' : 'rgba(255, 255, 255, 0.8)';
             const textColor = isDark ? '#F8FAFC' : '#0F172A';
             const textSecondary = isDark ? '#94A3B8' : '#475569';
-            const borderColor = isDark ? '#334155' : '#E2E8F0';
+            const borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(15, 23, 42, 0.1)';
 
-            // Generate the HTML for the new window
             const htmlContent = `
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <title>Careers | J. Louis Onguto Advocates</title>
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
                 <style>
                     body {
                         font-family: 'Inter', sans-serif;
                         background-color: ${bgColor};
                         color: ${textColor};
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                        margin: 0;
-                        padding: 20px;
-                        box-sizing: border-box;
+                        display: flex; justify-content: center; align-items: center;
+                        height: 100vh; margin: 0; padding: 20px; box-sizing: border-box;
                     }
                     .message-box {
-                        background-color: ${surfaceColor};
-                        padding: 3rem;
-                        border-radius: 12px;
+                        background: ${surfaceColor};
+                        backdrop-filter: blur(16px);
+                        -webkit-backdrop-filter: blur(16px);
+                        padding: 3.5rem;
+                        border-radius: 16px;
                         border: 1px solid ${borderColor};
                         text-align: center;
-                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                        max-width: 450px;
-                        width: 100%;
+                        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+                        max-width: 480px; width: 100%;
                     }
-                    h2 {
-                        font-family: 'Playfair Display', serif;
-                        margin-top: 0;
-                        margin-bottom: 1rem;
-                        font-size: 2rem;
-                    }
-                    p {
-                        color: ${textSecondary};
-                        line-height: 1.6;
-                        margin-bottom: 0;
-                        font-size: 1.1rem;
-                    }
+                    h2 { font-family: 'Playfair Display', serif; margin-top: 0; margin-bottom: 1.2rem; font-size: 2.2rem; }
+                    p { color: ${textSecondary}; line-height: 1.7; margin-bottom: 0; font-size: 1.15rem; }
                 </style>
             </head>
             <body>
                 <div class="message-box">
                     <h2>Careers</h2>
-                    <p>There are currently no job openings available at J. Louis Onguto Advocates. Please check back later.</p>
+                    <p>There are currently no job openings available at J. Louis Onguto Advocates. We encourage you to check back in the future.</p>
                 </div>
             </body>
             </html>
             `;
             
-            // Write the HTML into the new tab
             newWindow.document.write(htmlContent);
             newWindow.document.close();
         }
