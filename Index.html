@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J. Louis Onguto Advocates</title>
-    <!-- High-end Google Fonts: Playfair Display for headings, Inter for body -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- THEME VARIABLES --- */
@@ -216,22 +215,51 @@
             display: block;
         }
 
-        /* --- CONTACT SECTION --- */
-        .contact-info {
-            text-align: center;
+        /* --- CONTACT & MAP SECTION --- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: stretch;
             background-color: var(--surface-color);
-            padding: 4rem 2rem;
+            padding: 3rem;
             border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-details strong {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .map-container {
+            width: 100%;
+            min-height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
             border: 1px solid var(--border-color);
         }
 
-        .contact-info p {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info strong {
-            color: var(--text-primary);
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* --- FOOTER --- */
@@ -243,16 +271,25 @@
         }
 
         /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+            .map-container {
+                height: 300px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .team-grid { grid-template-columns: 1fr; }
+            .contact-layout { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav style="background-color: transparent;"> <!-- Inline style for JS override handling -->
+    <nav style="background-color: transparent;"> 
         <div class="container nav-container">
             <a href="#" class="logo">J. Louis Onguto</a>
             <button class="theme-toggle" id="themeToggle">
@@ -261,7 +298,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Rigorous Scholarship.<br><span class="accent-text">Commercial Precision.</span><br>Enduring Integrity.</h1>
@@ -269,7 +305,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container" style="max-width: 800px; text-align: center;">
             <div class="section-header">
@@ -279,7 +314,6 @@
         </div>
     </section>
 
-    <!-- Practice Areas -->
     <section id="practice" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container">
             <div class="section-header">
@@ -306,7 +340,6 @@
         </div>
     </section>
 
-    <!-- Team Section -->
     <section id="team">
         <div class="container">
             <div class="section-header">
@@ -338,7 +371,6 @@
                 </div>
             </div>
 
-            <!-- Support Staff -->
             <div class="section-header" style="margin-top: 6rem; margin-bottom: 3rem;">
                 <h2>Administration & Support</h2>
             </div>
@@ -357,28 +389,38 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" style="background-color: var(--surface-color); border-top: 1px solid var(--border-color);">
-        <div class="container" style="max-width: 600px;">
+    <section id="contact" style="background-color: var(--bg-color); border-top: 1px solid var(--border-color);">
+        <div class="container" style="max-width: 1000px;">
             <div class="section-header">
                 <h2>Contact Us</h2>
             </div>
-            <div class="contact-info">
-                <p><strong>Office:</strong> 2nd Floor, Flamingo Towers<br>Mara Road, Upper Hill, Nairobi</p>
-                <p style="margin-top: 1.5rem;"><strong>Phone:</strong> 0723 155 808</p>
-                <p><strong>Email:</strong> jlouisongutoadvocates@gmail.com</p>
+            
+            <div class="contact-layout">
+                <div class="contact-details">
+                    <p><strong>Office Location</strong> 2nd Floor, Flamingo Towers<br>Mara Road, Upper Hill, Nairobi</p>
+                    <p><strong>Phone Number</strong> 0723 155 808</p>
+                    <p><strong>Email Address</strong> <a href="mailto:jlouisongutoadvocates@gmail.com" style="color: var(--accent-color); text-decoration: none;">jlouisongutoadvocates@gmail.com</a></p>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Flamingo+Towers,+Mara+Road,+Upper+Hill,+Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
+            
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p style="margin: 0; font-size: 0.9rem;">&copy; 2026 J. Louis Onguto Advocates. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Theme Toggle Script -->
     <script>
         const toggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
